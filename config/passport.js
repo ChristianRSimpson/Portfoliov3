@@ -1,21 +1,25 @@
-// add a reference to the passport strategy
+// add a reference to passport
 var LocalStrategy = require('passport-local').Strategy;
 
-// import the User Model
+//user the User
 var User = require('../models/user');
 
-module.exports = function(passport) {
+module.exports = function(passport) 
+{
 	
-	// SETUP for Session Storage and Retrieval
+	// SETUP for session retrival
 	
 	//serialize user
-	passport.serializeUser(function(user, done) {
+	passport.serializeUser(function(user, done) 
+	{
 		done(null, user);
 	});
 	
 	//deserialze user
-	passport.deserializeUser(function(id, done) {
-		User.findById(id, function(err, user) {
+	passport.deserializeUser(function(id, done) 
+	{
+		User.findById(id, function(err, user) 
+		{
 			done(err, user);
 		});
 	});
@@ -23,70 +27,88 @@ module.exports = function(passport) {
 	passport.use('local-login', new LocalStrategy({
 		passReqToCallback: true
 	},
-	function(req, username, password, done) {
+	function(req, username, password, done) 
+	{
 		
-		// asynchronous process
-		process.nextTick(function() {
+		// asynchronous
+		process.nextTick(function() 
+		{
 			User.findOne({
 				'username':username
-			}, function(err, user) {
-				if(err) {
+			}, 
+			function(err, user) 
+			{
+				if(err) 
+				{
 					return done(err);
 				}
 				
-				//no valid user found
-				if(!user) {
+				//user is not real or wrong
+				if(!user) 
+				{
 					return done(null, false, req.flash('loginMessage', 'Incorrect Username'));
 				}
 				
-				//no valid password entered
-				if(!user.validPassword(password)) {
+				//passowrd is wrong
+				if(!user.validPassword(password)) 
+				{
 					return done(null, false, req.flash('loginMessage', 'Incorrect Password'));
 				}
 				
-				//everything is ok - proceed with login
+				//everything is A,OK
 				return done(null, user);
 			});
 		});
 	}));
 	
-	// Configure registration local strategy
+	// Configure registration to the local strategy
 	passport.use('local-registration', new LocalStrategy({
 		passReqToCallback: true
 	},
 	
-	function(req, username, password, done) {
+	function(req, username, password, done) 
+	{
 		
-		//asynchronous process
-		process.nextTick(function() {
-			// if the user is not already logged in
-			if(!req.user) {
+		//asynchronous
+		process.nextTick(function() 
+		{
+			// if user is logged in already
+			if(!req.user) 
+			{
 				User.findOne({'username': username},
-				function(err, user) {
-					//if any weird errors
-					if(err) {
+				function(err, user) 
+				{
+					//if any errors happen
+					if(err) 
+					{
 						return done(err);
 					}
-					//check if username is already in use
-					if(user) {
+					//check if username is in use
+					if(user) 
+					{
 						return done(null, false, req.flash('registrationMessage', 'The username is already take'));
 					}
-					else {
-						// create the user
+					else 
+					{
+						// creating the user
 						var newUser = new User(req.body);
 						newUser.password = newUser.generateHash(newUser.password);
 						newUser.provider = 'local';
 						newUser.created = Date.now();
 						newUser.updated = Date.now();
-						newUser.save(function(err) {
-							if(err) {
+						newUser.save(function(err) 
+						{
+							if(err) 
+							{
 								throw err;
 							}
 							return done(null, newUser);
 						});
 					}
 				});
-			} else {
+			} 
+			else 
+			{
 				// everything ok, register the user
 				return done(null, req.user);
 			}

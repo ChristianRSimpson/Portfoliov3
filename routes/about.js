@@ -6,7 +6,7 @@ var express = require('express');
 var express = require('express');
 var router = express.Router();
 
-/* Render home page. */
+/* get home page. */
 router.get('/about', function (req, res, next) {
     res.render('about', {
         title: 'about',
