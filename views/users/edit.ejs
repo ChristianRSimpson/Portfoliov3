@@ -2,22 +2,21 @@
 <div class="jumbotron">
 <main class="container">
     <h1>Edit a User</h1>
-
         <form method="post">
             <fieldset class="form-group">
-                <label for="email">Email: *</label>
+                <label for="email">Email: </label>
                 <input name="email" type="email" class="form-control" required value="<%= user.email %>" autofocus />
             </fieldset>
             <fieldset class="form-group">
-                <label for="username">Username: *</label>
+                <label for="username">Username: </label>
                 <input name="username" type="text" class="form-control" required value="<%= user.username %>" />
             </fieldset>
             <fieldset class="form-group">
-                <label for="password">Password: *</label>
+                <label for="password">Password: </label>
                 <input name="password" type="password" class="form-control" required value="<%= user.password %>"/>
             </fieldset>
             <fieldset class="form-group">
-                <label for="displayName">Display Name: *</label>
+                <label for="displayName">Display Name: </label>
                 <input name="displayName" type="text" class="form-control" required value="<%= user.displayName %>"/>
             </fieldset>
             <fieldset class="form-group text-right">
@@ -31,7 +30,6 @@
                 </a>
             </fieldset>
         </form>
-
 </div>
 </main>
 <% include ../partials/footer.ejs %>
