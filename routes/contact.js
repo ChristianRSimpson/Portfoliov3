@@ -7,8 +7,10 @@ var express = require('express');
 var router = express.Router();
 
 /* Render home page. */
-router.get('/contact', function (req, res, next) {
-    res.render('contact', {
+router.get('/contact', function (req, res, next) 
+{
+    res.render('contact', 
+    {
         title: 'contact',
         displayName: req.user ? req.user.displayName : ''
     });

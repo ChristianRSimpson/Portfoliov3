@@ -15,22 +15,28 @@ function requireAuth(req, res, next){
 }
 
 /* Render business main page. */
-router.get('/business', requireAuth, function (req, res, next) {
-    res.render('users/business', {
+router.get('/business', requireAuth, function (req, res, next) 
+{
+    res.render('users/business', 
+    {
         title: 'Users',
         displayName: req.user ? req.user.displayName : ''
     });
 });
 
 /* Render Users main page. */
-router.get('/', requireAuth, function (req, res, next) {
-    User.find(function (err, users) {
-        if (err) {
+router.get('/', requireAuth, function (req, res, next) 
+{
+    User.find(function (err, users) 
+    {
+        if (err) 
+        {
             console.log(err);
             res.end(err);
         }
         else {
-            res.render('users/index', {
+            res.render('users/index', 
+            {
                 title: 'Users',
                 users: users,
                 displayName: req.user ? req.user.displayName : ''
@@ -40,15 +46,18 @@ router.get('/', requireAuth, function (req, res, next) {
 });
 
 /* show the add user page*/
-router.get('/add', requireAuth, function (req, res, next) {
-    res.render('users/add', {
+router.get('/add', requireAuth, function (req, res, next) 
+{
+    res.render('users/add', 
+    {
         title: 'Users',
         displayName: req.user ? req.user.displayName : ''
     });
 });
 
 /* process the submission of a new user */
-router.post('/add', requireAuth, function (req, res, next) {
+router.post('/add', requireAuth, function (req, res, next) 
+{
     var user = new User(req.body);
     var hashedPassword = user.generateHash(user.password);
     User.create({
@@ -58,8 +67,10 @@ router.post('/add', requireAuth, function (req, res, next) {
         provider: 'local',
         created: Date.now(),
         updated: Date.now()
-    }, function (err, User) {
-        if (err) {
+    }, function (err, User) 
+    {
+        if (err) 
+        {
             console.log(err);
             res.end(err);
         }
@@ -70,18 +81,22 @@ router.post('/add', requireAuth, function (req, res, next) {
 });
 
 /* Render the User Edit Page */
-router.get('/:id', requireAuth, function (req, res, next) {
+router.get('/:id', requireAuth, function (req, res, next) 
+{
     // create an id variable
     var id = req.params.id;
     // use mongoose and our model to find the right user
-    User.findById(id, function (err, user) {
-        if (err) {
+    User.findById(id, function (err, user) 
+    {
+        if (err) 
+        {
             console.log(err);
             res.end(err);
         }
         else {
             //show the edit view
-            res.render('users/edit', {
+            res.render('users/edit', 
+            {
                 title: 'Users',
                 user: user,
                 displayName: req.user ? req.user.displayName : ''
@@ -91,7 +106,8 @@ router.get('/:id', requireAuth, function (req, res, next) {
 });
 
 /* process the edit form submission */
-router.post('/:id', requireAuth, function (req, res, next) {
+router.post('/:id', requireAuth, function (req, res, next) 
+{
     var id = req.params.id;
     var user = new User(req.body);
     user.password = user.generateHash(user.password);
@@ -99,8 +115,10 @@ router.post('/:id', requireAuth, function (req, res, next) {
     user.updated = Date.now();
     
     // use mongoose to do the update
-    User.update({ _id: id }, user, function (err) {
-        if (err) {
+    User.update({ _id: id }, user, function (err) 
+    {
+        if (err)
+        {
             console.log(err);
             res.end(err);
         }
@@ -111,10 +129,13 @@ router.post('/:id', requireAuth, function (req, res, next) {
 });
 
 /* run delete on the selected user */
-router.get('/delete/:id', requireAuth, function (req, res, next) {
+router.get('/delete/:id', requireAuth, function (req, res, next) 
+{
     var id = req.params.id;
-    User.remove({ _id: id }, function (err) {
-        if (err) {
+    User.remove({ _id: id }, function (err) 
+    {
+        if (err) 
+        {
             console.log(err);
             res.end(err);
         }

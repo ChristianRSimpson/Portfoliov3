@@ -7,8 +7,10 @@ var express = require('express');
 var router = express.Router();
 
 /* get home page. */
-router.get('/about', function (req, res, next) {
-    res.render('about', {
+router.get('/about', function (req, res, next) 
+{
+    res.render('about', 
+    {
         title: 'about',
         displayName: req.user ? req.user.displayName : ''
     });
