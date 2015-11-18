@@ -5,7 +5,7 @@
  */
 
 var app = require('./app');
-var debug = require('debug')('portfolioV3:server');
+var debug = require('debug')('comp2068-lesson8:server');
 var http = require('http');
 
 /**
