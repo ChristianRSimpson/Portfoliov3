@@ -7,10 +7,8 @@ var express = require('express');
 var router = express.Router();
 
 /* Render home page. */
-router.get('/projects', function (req, res, next) 
-{
-    res.render('projects', 
-    {
+router.get('/projects', function (req, res, next) {
+    res.render('projects', {
         title: 'projects',
         displayName: req.user ? req.user.displayName : ''
     });

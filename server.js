@@ -5,7 +5,11 @@
  */
 
 var app = require('./app');
+<<<<<<< HEAD
 var debug = require('debug')('comp2068-lesson8:server');
+=======
+var debug = require('debug')('COMP2068-Lesson8:server');
+>>>>>>> parent of 21b26c4... Added more comments
 var http = require('http');
 
 /**
@@ -33,18 +37,15 @@ server.on('listening', onListening);
  * Normalize a port into a number, string, or false.
  */
 
-function normalizePort(val) 
-{
+function normalizePort(val) {
   var port = parseInt(val, 10);
 
-  if (isNaN(port)) 
-  {
+  if (isNaN(port)) {
     // named pipe
     return val;
   }
 
-  if (port >= 0) 
-  {
+  if (port >= 0) {
     // port number
     return port;
   }
@@ -56,10 +57,8 @@ function normalizePort(val)
  * Event listener for HTTP server "error" event.
  */
 
-function onError(error) 
-{
-  if (error.syscall !== 'listen') 
-  {
+function onError(error) {
+  if (error.syscall !== 'listen') {
     throw error;
   }
 
@@ -68,8 +67,7 @@ function onError(error)
     : 'Port ' + port;
 
   // handle specific listen errors with friendly messages
-  switch (error.code) 
-  {
+  switch (error.code) {
     case 'EACCES':
       console.error(bind + ' requires elevated privileges');
       process.exit(1);
@@ -87,8 +85,7 @@ function onError(error)
  * Event listener for HTTP server "listening" event.
  */
 
-function onListening() 
-{
+function onListening() {
   var addr = server.address();
   var bind = typeof addr === 'string'
     ? 'pipe ' + addr
