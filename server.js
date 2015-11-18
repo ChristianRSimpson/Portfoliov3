@@ -5,7 +5,11 @@
  */
 
 var app = require('./app');
+<<<<<<< HEAD
 var debug = require('debug')('comp2068-lesson8:server');
+=======
+var debug = require('debug')('COMP2068-Lesson8:server');
+>>>>>>> parent of 21b26c4... Added more comments
 var http = require('http');
 
 /**
