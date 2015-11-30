@@ -24,7 +24,7 @@ var projects = require('./server/routes/projects');
 var about = require('./server/routes/about');
 var contact = require('./server/routes/contact');
 var services = require('./server/routes/services');
-
+var todos = require('./server/routes/todos');
 
 var app = express();
 
@@ -32,7 +32,7 @@ var app = express();
 require('./server/config/passport')(passport);
 
 // view engine setup
-app.set('views', path.join(__dirname, 'views'));
+app.set('views', path.join(__dirname, './server/views'));
 app.set('view engine', 'ejs');
 
 app.use(logger('dev'));
