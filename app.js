@@ -59,7 +59,7 @@ app.use('/', projects);
 app.use('/', about);
 app.use('/', contact);
 app.use('/', services);
-
+app.use('/todos', todos);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

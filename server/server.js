@@ -4,7 +4,7 @@
  * Module dependencies.
  */
 
-var app = require('./server/app');
+var app = require('../app');
 
 //for some reason i cant change this to anything else otherwise my pages dont show up 
 var debug = require('debug')('COMP2068-Lesson8:server');
