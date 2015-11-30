@@ -1,4 +1,3 @@
-
 // Registering npm modules
 var express = require('express');
 var path = require('path');
@@ -33,7 +32,7 @@ var app = express();
 require('./server/config/passport')(passport);
 
 // view engine setup
-app.set('views', path.join(__dirname, 'views'));
+app.set('views', path.join(__dirname, './server/views'));
 app.set('view engine', 'ejs');
 
 app.use(logger('dev'));
