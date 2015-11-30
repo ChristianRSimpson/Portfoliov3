@@ -6,7 +6,7 @@ var User = require('../models/user');
 
 /* Render home page. */
 router.get('/', function (req, res, next) {
-    res.render('../views/index', {
+    res.render('index', {
         title: 'Home',
         displayName: req.user ? req.user.displayName : ''
     });
