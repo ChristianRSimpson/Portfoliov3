@@ -5,8 +5,8 @@ var router = express.Router();
 var User = require('../models/user');
 
 /* Render home page. */
-router.get('../views/', function (req, res, next) {
-    res.render('index', {
+router.get('/', function (req, res, next) {
+    res.render('../server/index', {
         title: 'Home',
         displayName: req.user ? req.user.displayName : ''
     });
