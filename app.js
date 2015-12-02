@@ -24,7 +24,7 @@ var projects = require('./server/routes/projects');
 var about = require('./server/routes/about');
 var contact = require('./server/routes/contact');
 var services = require('./server/routes/services');
-var todos = require('./server/routes/todos');
+var todos = require('./server/views/todos/index');
 
 var app = express();
 
