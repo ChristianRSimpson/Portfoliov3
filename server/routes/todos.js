@@ -12,6 +12,14 @@ function requireAuth(req, res, next){
   if(!req.isAuthenticated()){
     return res.redirect('/login');
   }
+  else{
+    router.get('/todos', function (req, res, next) {
+    res.render('todolist', {
+        title: 'Todos',
+        displayName: req.user ? req.user.displayName : ''
+    });
+});
+  }
   next();
 }
 
