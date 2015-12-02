@@ -14,11 +14,11 @@ function requireAuth(req, res, next){
   }
   else{
     router.get('/todos', function (req, res, next) {
-    res.render('todolist', {
+        res.render('todos', {
         title: 'Todos',
         displayName: req.user ? req.user.displayName : ''
+        });
     });
-});
   }
   next();
 }
