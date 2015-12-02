@@ -5,20 +5,12 @@ var router = express.Router();
 //var mongoose = require('mongoose');
 var Todo = require('../models/todo.js');
 
-/* Utility function to check if user is authenticatd */
+/* Utility functin to check if user is authenticatd */
 function requireAuth(req, res, next){
 
   // check if the user is logged in
   if(!req.isAuthenticated()){
     return res.redirect('/login');
-  }
-  else{
-    router.get('/todos', function (req, res, next) {
-        res.render('todolist', {
-        title: 'Todos',
-        displayName: req.user ? req.user.displayName : ''
-        });
-    });
   }
   next();
 }
