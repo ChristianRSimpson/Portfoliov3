@@ -13,7 +13,7 @@ function requireAuth(req, res, next){
     return res.redirect('/login');
   }
   else{
-    router.get('/todos', function (req, res, next) {
+    router.get('/todolist', function (req, res, next) {
         res.render('todoList', {
         title: 'Todos',
         displayName: req.user ? req.user.displayName : ''
