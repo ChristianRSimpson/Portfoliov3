@@ -73,4 +73,13 @@ router.get('/logout', function (req, res)
   res.redirect('/');
 });
 
+/* GET home page. */
+router.get('/todoList', requireAuth, function(req, res, next) {
+  res.render('todos/index', { 
+      title: 'Todo List',
+      displayName: req.user ? req.user.displayName : '',
+      username: req.user ? req.user.username : '' 
+  });
+});
+
 module.exports = router;
