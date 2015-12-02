@@ -6,7 +6,7 @@ var express = require('express');
 var router = express.Router();
 
 /* Render servives page. */
-router.get('../views/services', function (req, res, next) {
+router.get('/services', function (req, res, next) {
     res.render('services', {
         title: 'services',
         displayName: req.user ? req.user.displayName : ''
