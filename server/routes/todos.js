@@ -14,7 +14,7 @@ function requireAuth(req, res, next){
   }
   else{
     router.get('/todolist', function (req, res, next) {
-        res.render('todoList', {
+        res.render('todolist', {
         title: 'Todos',
         displayName: req.user ? req.user.displayName : ''
         });
