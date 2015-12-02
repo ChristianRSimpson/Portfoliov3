@@ -12,7 +12,7 @@ var flash = require('connect-flash');
 var passport = require('passport');
 
 //DB Setup 
-var DB = require('./config/db.js');
+var DB = require('./server/config/db.js');
 mongoose.connect(DB.url);
 mongoose.connection.on('error', function(){
   console.error('MongoDB Connection Error');
