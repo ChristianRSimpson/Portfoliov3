@@ -4,6 +4,15 @@ var router = express.Router();
 
 var User = require('../models/user');
 
+function requireAuth(req, res, next){
+
+  // check if the user is logged in
+  if(!req.isAuthenticated()){
+    return res.redirect('/login');
+  }
+  next();
+}
+
 /* Render home page. */
 router.get('/', function (req, res, next) {
     res.render('index', {
