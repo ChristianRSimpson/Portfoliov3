@@ -20,7 +20,7 @@
                         <li ng-repeat="todo in todos | filter: search | filter: {username: '<%= username %>'}" class="list-group-item">
                             <div class="btn-group">
                                 <button type="button" ng-show="!editing[$index]" ng-click="edit($index)" class="btn btn-default "><i class="fa fa-edit"></i></button>
-
+a
                             </div> <!-- btn-group -->
                             <span ng-show="editing[$index]">complete?</span>
                             <input type="checkbox" ng-model="todo.completed" ng-change="update($index)">
